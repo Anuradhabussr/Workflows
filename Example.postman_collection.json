@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "7a84a156-db02-42cf-a139-89283798cbd5",
+		"name": "Example.postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://directions-graphql.herokuapp.com/graphql",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "fragment TransitPointDetailsParts on TransitPointDetails {\r\n  formatedTime\r\n  address\r\n  timeZone\r\n  timeValue\r\n  location {\r\n    latitude\r\n    longitude\r\n  }\r\n}\r\nfragment OtherPointDetailsParts on OtherPointDetails {\r\n  address\r\n  location {\r\n    latitude\r\n    longitude\r\n  }\r\n}\r\nfragment TripDataPart on TripData {\r\n  arrival {\r\n    ... on TransitPointDetails {\r\n    \t...TransitPointDetailsParts\r\n    }\r\n    ... on OtherPointDetails {\r\n      ...OtherPointDetailsParts\r\n    }\r\n  }\r\n  departure {\r\n    ... on TransitPointDetails {\r\n    \t...TransitPointDetailsParts\r\n    }\r\n    ... on OtherPointDetails {\r\n      ...OtherPointDetailsParts\r\n    }\r\n  }\r\n  tripDuration {\r\n    ...TypedDataParts\r\n  }\r\n  tripDistance {\r\n    ...TypedDataParts\r\n  }\r\n}\r\nfragment TypedDataParts on TypedData {\r\n  formattedValue\r\n  rawValue\r\n}\r\nfragment CoordsPart on Coords {\r\n  latitude\r\n  longitude\r\n}\r\nquery($coordinates: PlaceCoordinatesInput!, $travelMode: AllowTravelModes!) {\r\n  direction(coordinates: $coordinates, travelMode: $travelMode) {\r\n    fare {\r\n      formattedFare\r\n      currency\r\n      fareValue\r\n    }\r\n    tripData {\r\n      ...TripDataPart\r\n    }\r\n    steps {\r\n      stepTravelMode\r\n      stepDistance {\r\n        ...TypedDataParts\r\n      }\r\n      stepDuration {\r\n        ...TypedDataParts\r\n      }\r\n      startLocation {\r\n        ...CoordsPart\r\n      }\r\n      endLocation {\r\n        ...CoordsPart\r\n      }\r\n      polyline\r\n      stepInstruction\r\n      ... on WalkStep {\r\n        walkSteps {\r\n          stepTravelMode\r\n          stepInstruction\r\n        }\r\n      }\r\n      ... on TransitStep {\r\n        arrival {\r\n        \t...TransitPointDetailsParts\r\n        }\r\n        departure {\r\n          ...TransitPointDetailsParts\r\n        }\r\n        transitData {\r\n          tripName\r\n          tripShortName\r\n          url\r\n          headSign\r\n          stopsCount\r\n          vehicleIcon\r\n          vehicleName\r\n          vehicleType\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n ",
+						"variables": "{\r\n  \"coordinates\": {\r\n    \"startLat\": 37.7919227,\r\n    \"startLng\": -122.4152148,\r\n    \"endLat\": 37.6213171,\r\n    \"endLng\": -122.3811441\r\n  },\r\n  \"travelMode\": \"walking\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "https://directions-graphql.herokuapp.com/graphql",
+					"protocol": "https",
+					"host": [
+						"directions-graphql",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
