@@ -21,6 +21,6 @@ jobs:
       run: | 
         npm run start:dev &
         sleep 60
-        newman run "Example.postman_collection.json"
+        newman run Example.postman_collection.json --reporters htmlextra --reporter-htmlextra-title "testdemo"
       env:
         NODE_ENV: "develop"
