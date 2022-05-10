@@ -1,6 +1,5 @@
 name: postman-pull-request
-on: [push, pull_request] // this action runs on each new push 
-                         // and pull_request
+on: [push, pull_request] 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,9 +15,9 @@ jobs:
     with:
       node-version: ${{ matrix.node-version }}
       registry-url: https://registry.npmjs.org/
-   - name: Install newman
+  - name: Install newman
     run: npm install -g newman
-    - name: Run the API and Postman's tests
+  - name: Run the API and Postman's tests
     run: | 
       npm run start:dev &
       sleep 60
