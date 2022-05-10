@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "newman-reporter-html": "^1.0.5"
+  },
+  "scripts": {
+    "start": " node ."
   }
 }
