@@ -32,9 +32,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}",
+					"raw": "https://directions-graphql.herokuapp.com/graphql",
+					"protocol": "https",
 					"host": [
-						"{{url}}"
+						"directions-graphql",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"graphql"
 					]
 				}
 			},
