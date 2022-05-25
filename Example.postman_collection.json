@@ -2,41 +2,144 @@
 	"info": {
 		"_postman_id": "7a84a156-db02-42cf-a139-89283798cbd5",
 		"name": "Example.postman_collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20838263"
 	},
 	"item": [
 		{
-			"name": "https://directions-graphql.herokuapp.com/graphql",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "https://6780-49-37-148-83.ngrok.io/graphql",
 			"request": {
 				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "fragment TransitPointDetailsParts on TransitPointDetails {\r\n  formatedTime\r\n  address\r\n  timeZone\r\n  timeValue\r\n  location {\r\n    latitude\r\n    longitude\r\n  }\r\n}\r\nfragment OtherPointDetailsParts on OtherPointDetails {\r\n  address\r\n  location {\r\n    latitude\r\n    longitude\r\n  }\r\n}\r\nfragment TripDataPart on TripData {\r\n  arrival {\r\n    ... on TransitPointDetails {\r\n    \t...TransitPointDetailsParts\r\n    }\r\n    ... on OtherPointDetails {\r\n      ...OtherPointDetailsParts\r\n    }\r\n  }\r\n  departure {\r\n    ... on TransitPointDetails {\r\n    \t...TransitPointDetailsParts\r\n    }\r\n    ... on OtherPointDetails {\r\n      ...OtherPointDetailsParts\r\n    }\r\n  }\r\n  tripDuration {\r\n    ...TypedDataParts\r\n  }\r\n  tripDistance {\r\n    ...TypedDataParts\r\n  }\r\n}\r\nfragment TypedDataParts on TypedData {\r\n  formattedValue\r\n  rawValue\r\n}\r\nfragment CoordsPart on Coords {\r\n  latitude\r\n  longitude\r\n}\r\nquery($coordinates: PlaceCoordinatesInput!, $travelMode: AllowTravelModes!) {\r\n  direction(coordinates: $coordinates, travelMode: $travelMode) {\r\n    fare {\r\n      formattedFare\r\n      currency\r\n      fareValue\r\n    }\r\n    tripData {\r\n      ...TripDataPart\r\n    }\r\n    steps {\r\n      stepTravelMode\r\n      stepDistance {\r\n        ...TypedDataParts\r\n      }\r\n      stepDuration {\r\n        ...TypedDataParts\r\n      }\r\n      startLocation {\r\n        ...CoordsPart\r\n      }\r\n      endLocation {\r\n        ...CoordsPart\r\n      }\r\n      polyline\r\n      stepInstruction\r\n      ... on WalkStep {\r\n        walkSteps {\r\n          stepTravelMode\r\n          stepInstruction\r\n        }\r\n      }\r\n      ... on TransitStep {\r\n        arrival {\r\n        \t...TransitPointDetailsParts\r\n        }\r\n        departure {\r\n          ...TransitPointDetailsParts\r\n        }\r\n        transitData {\r\n          tripName\r\n          tripShortName\r\n          url\r\n          headSign\r\n          stopsCount\r\n          vehicleIcon\r\n          vehicleName\r\n          vehicleType\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n ",
-						"variables": "{\r\n  \"coordinates\": {\r\n    \"startLat\": 37.7919227,\r\n    \"startLng\": -122.4152148,\r\n    \"endLat\": 37.6213171,\r\n    \"endLng\": -122.3811441\r\n  },\r\n  \"travelMode\": \"walking\"\r\n}"
+				"header": [
+					{
+						"key": "authority",
+						"value": "6780-49-37-148-83.ngrok.io"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "origin",
+						"value": "https://cros-network-dev.web.app"
+					},
+					{
+						"key": "referer",
+						"value": "https://cros-network-dev.web.app/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"101\", \"Google Chrome\";v=\"101\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36"
 					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"variables\":{},\"query\":\"{\\n  campaign(userId: \\\"628dc4811637fb2ed1f5bddc\\\") {\\n    id\\n    name\\n    objective\\n    userId\\n    adType\\n    metaverse\\n    assetCategory\\n    schedule {\\n      startDate\\n      endDate\\n      __typename\\n    }\\n    businessInfo {\\n      name\\n      industry\\n      category\\n      website\\n      __typename\\n    }\\n    address {\\n      address\\n      city\\n      country\\n      __typename\\n    }\\n    budget {\\n      dailyBudget\\n      bidAdmountPerCPM\\n      __typename\\n    }\\n    createdAt\\n    updatedAt\\n    __typename\\n  }\\n}\"}"
 				},
 				"url": {
-					"raw": "https://directions-graphql.herokuapp.com/graphql",
+					"raw": "https://6780-49-37-148-83.ngrok.io/graphql",
 					"protocol": "https",
 					"host": [
-						"directions-graphql",
-						"herokuapp",
-						"com"
+						"6780-49-37-148-83",
+						"ngrok",
+						"io"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://6780-49-37-148-83.ngrok.io/graphql",
+			"request": {
+				"method": "OPTIONS",
+				"header": [
+					{
+						"key": "authority",
+						"value": "6780-49-37-148-83.ngrok.io"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "access-control-request-headers",
+						"value": "content-type"
+					},
+					{
+						"key": "access-control-request-method",
+						"value": "POST"
+					},
+					{
+						"key": "origin",
+						"value": "https://cros-network-dev.web.app"
+					},
+					{
+						"key": "referer",
+						"value": "https://cros-network-dev.web.app/"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36"
+					}
+				],
+				"url": {
+					"raw": "https://6780-49-37-148-83.ngrok.io/graphql",
+					"protocol": "https",
+					"host": [
+						"6780-49-37-148-83",
+						"ngrok",
+						"io"
 					],
 					"path": [
 						"graphql"
