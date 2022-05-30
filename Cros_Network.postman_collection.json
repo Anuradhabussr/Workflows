@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "7a84a156-db02-42cf-a139-89283798cbd5",
+		"name": "Cros_Network",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20838263"
+	},
+	"item": [
+		{
+			"name": "CreateCampaign",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTA3ZTAxYWQ2MjVjMmE5MTQ0N2Y5NSIsIndhbGxldEFkZHJlc3MiOiIweGZkQjA4MWM1YTljOWRFMzE5NzQyRUM4NzU5MDJBNTgzRUNhZkQ4OEIiLCJyb2xlIjoiQWR2ZXJ0aXNlciIsImlhdCI6MTY1MzY0NzQ1M30.sDMU7TRJRKnAWPMh27WnpC4WEE6XSDmZ81GXXewQRfA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:9000"
+					},
+					{
+						"key": "Referer",
+						"value": "http://localhost:9000/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTA3ZTAxYWQ2MjVjMmE5MTQ0N2Y5NSIsIndhbGxldEFkZHJlc3MiOiIweGZkQjA4MWM1YTljOWRFMzE5NzQyRUM4NzU5MDJBNTgzRUNhZkQ4OEIiLCJyb2xlIjoiQWR2ZXJ0aXNlciIsImlhdCI6MTY1MzY0NzQ1M30.sDMU7TRJRKnAWPMh27WnpC4WEE6XSDmZ81GXXewQRfA"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"101\", \"Google Chrome\";v=\"101\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation ($userId: String!, $createCampaignInput: CreateCampaignInput!) {\r\n  createCampaign(userId: $userId, createCampaignInput: $createCampaignInput) {\r\n    name\r\n    id\r\n  }\r\n  }",
+						"variables": "{\r\n  \"userId\": \"62907e01ad625c2a91447f95\",\r\n  \"createCampaignInput\": {\r\n    \"name\":\"qwerty12345ijyhhhhhhhjhffdgfdhh\",\r\n    \"objective\":\"Website Traffic\",\r\n    \"userId\":\"62907e01ad625c2a91447f95\",\r\n    \"adType\":\"3D Image\",\r\n    \"metaverse\":\"Decentraland\",\r\n    \"assetCategory\":[\"Entertainment\"],\r\n    \"schedule\":{\"startDate\":\"2022-05-25\",\"endDate\":\"2022-05-26\"},\r\n    \"businessInfo\": {\r\n      \"name\":\"sasas\",\r\n      \"industry\":\"Automotive and Transport\",\r\n      \"category\":\"sasasas\",\r\n      \"website\":\"sasas\"\r\n    },\r\n    \"address\": {\r\n      \"address\":\"sasas\",\r\n      \"city\":\"sasas\",\r\n      \"country\":\"India\"\r\n    },\r\n    \"budget\": {\r\n      \"dailyBudget\": 100.00,\r\n      \"bidAdmountPerCPM\": 100.00\r\n    },\r\n    \"status\":\"DRAFT\"\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCampaigns",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTA3ZTAxYWQ2MjVjMmE5MTQ0N2Y5NSIsIndhbGxldEFkZHJlc3MiOiIweGZkQjA4MWM1YTljOWRFMzE5NzQyRUM4NzU5MDJBNTgzRUNhZkQ4OEIiLCJyb2xlIjoiQWR2ZXJ0aXNlciIsImlhdCI6MTY1MzY0NzQ1M30.sDMU7TRJRKnAWPMh27WnpC4WEE6XSDmZ81GXXewQRfA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:9000",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "http://localhost:9000/",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"101\", \"Google Chrome\";v=\"101\"",
+						"type": "text"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"type": "text"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query($userId: String!) {\r\n    campaign(userId: $userId) {\r\n      id\r\n      name\r\n      objective\r\n      userId\r\n      adType\r\n      metaverse\r\n      assetCategory\r\n      schedule {\r\n        startDate\r\n        endDate\r\n      }\r\n      businessInfo {\r\n        name\r\n        industry\r\n        category\r\n        website\r\n      }\r\n      address {\r\n        address\r\n        city\r\n        country\r\n      }\r\n      budget {\r\n        dailyBudget\r\n        bidAdmountPerCPM\r\n      }\r\n    }\r\n  }",
+						"variables": "{\r\n  \"userId\": \"62907e01ad625c2a91447f95\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTA3ZTAxYWQ2MjVjMmE5MTQ0N2Y5NSIsIndhbGxldEFkZHJlc3MiOiIweGZkQjA4MWM1YTljOWRFMzE5NzQyRUM4NzU5MDJBNTgzRUNhZkQ4OEIiLCJyb2xlIjoiQWR2ZXJ0aXNlciIsImlhdCI6MTY1MzY0NzQ1M30.sDMU7TRJRKnAWPMh27WnpC4WEE6XSDmZ81GXXewQRfA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:9000",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "http://localhost:9000/",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"type": "text"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.0.0 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"101\", \"Google Chrome\";v=\"101\"",
+						"type": "text"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"type": "text"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"type": "text"
+					},
+					{
+						"key": "walletAddress",
+						"value": " \"0x6c05B70Eb563cA81efBCDd45022375b98AAd0D00\",",
+						"type": "text"
+					},
+					{
+						"key": "nonce",
+						"value": "\"Welcome to Cros Network!\\nSign this message with your wallet 0x6c05B70Eb563cA81efBCDd45022375b98AAd0D00 to authenticate.\\nLogin request nonce: c62ac45d031368c09ad2f0511449f0bd26a35a2ac3e47346\\nExpires on: 2022-05-27T12:01:23.818Z\",",
+						"type": "text"
+					},
+					{
+						"key": "signedMessage",
+						"value": "\"0x520aefb03bb7f9a169f08531a97f8b79473b85a46d4ea0e06ad5e633a751256d7615a32d6b26d1689f9ea88e81e6cc12b5ce530c70f2666afc69a9a04be125841c\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation ($loginInput: UserLoginInput!) {\r\n    login(user: $loginInput) {\r\n      token\r\n      user {\r\n        walletAddress\r\n        id\r\n      }\r\n    }\r\n  }",
+						"variables": "{\r\n    \"loginInput\": {\r\n      \"walletAddress\": \"0xfdB081c5a9c9dE319742EC875902A583ECafD88B\",\r\n      \"nonce\":\"Welcome to Cros Network!\\nSign this message with your wallet 0xfdB081c5a9c9dE319742EC875902A583ECafD88B to authenticate.\\nLogin request nonce: 14bec35ee77bf256335682a7b30e50165299bdf2648374f5\\nExpires on: 2022-05-27T13:22:43.443Z\",\r\n      \"signedMessage\":\"0xc50e38be45d529b4ed5e05a41442f24782f01afe492d87972a276c5e0fa6af6d08aeccfbb330d7708f484a5c38ae3f614df123c76e4a5ad5cec434974e57564c1b\"\r\n    }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
