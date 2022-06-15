@@ -22,7 +22,7 @@ jobs:
       run: mkdir -p testResults
     - name: Run the API and Postman's tests
       run: | 
-       newman run Crosnetworkupdated.postman_collection.json -e Crosnetwork.postman_environment.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html
+       newman run Crosnetworkupdated.postman_collection.json -e Crosnetwork.postman_environment.json -r htmlextra --reporter-htmlextra-export
        
     - name: Output the run Details
       uses: actions/upload-artifact@v2
